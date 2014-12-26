@@ -1,4 +1,5 @@
 import web
+import soundsystem_pygame as soundsystem
 
 urls = (
   '/api/player', 'Player',
@@ -8,21 +9,24 @@ urls = (
 
 render = web.template.render('templates/')
 
+player= soundsystem.Player ()
+mixer = soundsystem.Mixer ()
+
 class Player:
   
   def PUT ( self ):
-    i = web.input ( action= None )
+    i = web.input ( action= None, url= "media/sample.ogg" )
     if i.action == "play":
-      print "PLAY"
+      player.play ( i.url )
     elif i.action == "stop":
-      print "STOP"
+      player.stop ()
 
 class Mixer:
   
   def PUT ( self ):
     i = web.input ( volume= None )
     if not i.volume is None:
-      print "VOLUME: " + i.volume
+      mixer.setVolume ( int(i.volume) )
 
 class Control:
   def GET ( self ):

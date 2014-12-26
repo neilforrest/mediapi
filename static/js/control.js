@@ -10,7 +10,6 @@ $(function() {
           type : "PUT"
         });
         
-        $("#volume-value").text ( ui.value );
       }
     });
   

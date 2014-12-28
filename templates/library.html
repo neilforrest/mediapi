@@ -1,0 +1,69 @@
+$def with ( path, groups, items )
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="/static/js/main.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="pagelibrary">
+  <div data-role="header">
+    <h1>Audio System</h1>
+    
+    <div data-role="navbar">
+        <ul>
+            <li><a href="/control" data-icon="home">Home</a></li>
+            <li><a href="#" data-icon="bullets" class="ui-btn-active ui-state-persist">Library</a></li>
+        </ul>
+    </div>
+    
+  </div>
+
+  <div data-role="main" class="ui-content">
+  
+    <div data-role="popup" class="popupMessage">
+	    <p></p>
+    </div>
+    
+    <h3 class="ui-bar ui-bar-a">Browse</h3>
+    $if path != "":
+      <h4 class="ui-bar ui-bar-a">$path</h4>
+    
+    <div class="ui-body">
+      <ul data-role="listview" data-inset="true">
+      $for g in groups:
+        <li><a href="/library/$path/$g">$g</a></li>
+      $for i in items:
+        <li><a class="item-link" href="#">$i</a></li>
+      </ul>
+      
+    </div>
+    
+    <!--<h3 class="ui-bar ui-bar-a">Search</h3>
+    <div class="ui-body">
+    
+      <form class="ui-filterable">
+          <input id="autocomplete-input" data-type="search" placeholder="Search music...">
+      </form>
+      <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-input="#autocomplete-input" data-inset="true">
+          <li><a href="#">Apple</a></li>
+          <li><a href="#">Banana</a></li>
+          <li><a href="#">Cherry</a></li>
+          <li><a href="#">Cranberry</a></li>
+          <li><a href="#">Grape</a></li>
+          <li><a href="#">Orange</a></li>
+      </ul>
+      
+    </div>-->
+    
+  </div>
+
+</div> 
+
+</body>
+</html>

@@ -1,24 +1,54 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Media Control</title>
-    
-    <link rel="stylesheet" href="static/js/external/jquery-ui-1.11.2.custom/jquery-ui.min.css">
-    <script src="static/js/external/jquery-1.11.2.min.js"></script>
-    <script src="static/js/external/jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
-    <script src="static/js/external/jquery.ui.touch-punch.min.js"></script>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="/static/js/main.js"></script>
+</head>
+<body>
 
-    <script src="static/js/control.js"></script>
-    <link rel="stylesheet" href="static/css/master.css">
-  </head>
-  <body>
-  
-    <h1>Media Control</h1>
+<div data-role="page" id="pagecontrol">
+  <div data-role="header">
+    <h1>Audio System</h1>
     
-    <a class="button" id="play" href="#">Play</a>
-    <a class="button" id="stop" href="#">Stop</a>
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+            <li><a href="/library" data-icon="bullets">Library</a></li>
+        </ul>
+    </div>
     
-    <h2>Volume</h2>
-    <div class="slider" id="volume"></div>
+  </div>
+
+  <div data-role="main" class="ui-content">
     
-  </body>
+    <h3 class="ui-bar ui-bar-a">Queue</h3>
+    <div class="ui-body" id="queue">
+    </div>
+    
+    <h3 class="ui-bar ui-bar-a">Control</h3>
+    <div class="ui-body">
+      
+      <a href="#" id="play" class="ui-btn ui-icon-carat-r ui-btn-icon-right">Play</a>
+      <a href="#" id="stop" class="ui-btn ui-icon-delete ui-btn-icon-right">Stop</a>
+      <a href="#" id="skip" class="ui-btn ui-icon-arrow-r ui-btn-icon-right">Skip</a>
+        
+    </div>
+    
+    <h3 class="ui-bar ui-bar-a">Mixer</h3>
+    <div class="ui-body">
+      
+      <form>
+        <input name="volume" id="volume" min="0" max="100" value="50" type="range">
+      </form>
+      
+    </div>
+    
+  </div>
+
+</div> 
+
+</body>
 </html>

@@ -1,0 +1,15 @@
+$def with ( queue )
+      
+  $if len(queue) > 0:
+    <ol data-role="listview" id="queuelist">
+      $for i,item in enumerate(queue):
+        $if i == 0:
+          <li><em><strong>$item</strong></em></li>
+        $else:
+          <li>$item</li>
+    </ol>
+  $else:
+    <ul data-role="listview" id="queuelist">
+        <li><em>Queue empty</em></li>
+    </ul>
+

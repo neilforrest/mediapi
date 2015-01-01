@@ -67,14 +67,35 @@ $(document).on ( "pagecreate", "#pagecontrol", function ( event, data ) {
       });
       
     });
-    
+  
+  var lastVolumeChangeTime= 0;
+  var minCommandTime= 1000;
+
   $("#volume").change(function() {
+    
+    var d= new Date();
+    var t= d.getTime();
+
+    if ( t-lastVolumeChangeTime > minCommandTime ) {
+      lastVolumeChangeTime= t;
+
+      $.ajax({
+        url  : "/api/mixer",
+        data : "volume=" + $("#volume").val(),
+        type : "PUT"
+      });
+
+    }
+  });
+
+  $("#volume").on( "slidestop", function() {
 
     $.ajax({
       url  : "/api/mixer",
       data : "volume=" + $("#volume").val(),
       type : "PUT"
     });
+
   });
 
   refreshQueue ();

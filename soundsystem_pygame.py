@@ -62,9 +62,11 @@ class Player ( threading.Thread ):
       elif self.now_playing:
         self.now_playing= None
   
-  def addCallback ( self, callback, data= None, sync= False ):
+  def addCallback ( self, callback, data= None, sync= False, clearAll= False ):
   
     self.condition.acquire ()
+    if clearAll:
+      del self.callbacks[:]
     self.callbacks.append ( (callback,data) )
     self.condition.notify ()
     self.condition.release ()
@@ -117,7 +119,7 @@ class Player ( threading.Thread ):
     return q
 
   def setVolume ( self, volume ):
-    self.addCallback ( self.setVolumeCallback, volume )
+    self.addCallback ( self.setVolumeCallback, volume, clearAll= True )
   
   def setVolumeCallback ( self, volume ):
     pygame.mixer.music.set_volume ( volume/100.0 )
